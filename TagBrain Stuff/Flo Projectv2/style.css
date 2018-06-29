@@ -1,0 +1,56 @@
+.cadre{
+    height: 350px;
+    background-color:lightskyblue;
+    border: 5px dashed rgb(142, 135, 235);
+    margin: 20px auto;
+}
+.align-middle{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    font-size: 4em;
+    font-weight: bolder;
+    text-align: center;
+}
+.bs-component{
+    font-size: 2em;
+    display: block;
+    margin: 0 auto;
+}
+.footer{
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    padding: 20px;
+}
+.navbar{
+    display: block;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 70px;
+}
+.principale{
+    margin-top: 100px;
+}
+.inline{
+    display: inline;
+}
+.card-entiere{
+    margin-top: 10px;
+}
+.centrer{
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.small{
+    font-size: 1em;
+}
+.navbar{
+    z-index: 1000;
+}
