@@ -1,0 +1,35 @@
+<div class="card mb-3">
+    <div class="card-header">
+
+        <a href="mailto:<?= $article['email']; ?>">
+            <?= $article['username']; ?>
+        </a>
+        a écrit le <?= (new DateTime($article['created_at']))->format('d/m/y H:i'); ?>
+
+        <?php if (isset($_SESSION['user']) && $_SESSION['user']['user_id'] == $article['user_id']) : ?>
+            <?php if ($article['status']) : ?>
+                <span class="badge badge-success float-right">Publié</span>
+            <?php else : ?>
+                <span class="badge badge-dark float-right">Broullion</span>
+            <?php endif; ?>
+        <?php endif; ?>
+
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"><?= $article['title']; ?></h5>
+
+        <?php if (isset($article['categories'])) : ?>
+        <?php $categories = explode(',', $article['categories']); ?>
+
+        <div>
+            <?php foreach ($categories as $category) : ?>
+                <span class="badge badge-secondary"><?= $category; ?></span>
+            <?php endforeach; ?>
+        </div>
+
+        <?php endif; ?>
+
+        <p class="card-text"><?= $article['teaser']; ?></p>
+        <a href="#" class="btn btn-sm btn-primary">Read More</a>
+    </div>
+</div>

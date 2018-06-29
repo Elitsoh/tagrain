@@ -1,0 +1,36 @@
+<?php include THEME_PATH . DS . 'header.phtml'; ?>
+
+<form class="form-signin text-center " method="POST">
+    <a href="<?= BASE_URL ?>"><img src="<?= BASE_URL ?>/views/<?= THEME ?>/img/americandad.svg"
+         alt="Roger" width="180">
+    </a>
+
+    <h1 class="h3 mb-3 font-weight-normal text-light">identification</h1>
+
+    <?php if (!empty($errors)) : ?>
+        <?php foreach ($errors as $err) : ?>
+        <div class="alert alert-danger"><?= $err; ?></div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <div class="form-group">
+        <label for="username" class="sr-only">Identifiant</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Identifiant" required autofocus>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="sr-only">Mot de passe</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe" required>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+
+    <small class="form-text text-muted">
+        <a href="signup.php" class="text-light">Créer un compte</a> | <a href="#" class="text-light">mot de passe oublié</a>
+    </small>
+
+    <p class="mt-5 mb-3 text-muted">&copy; <?= date('Y') ?></p>
+</form>
+
+<?php include THEME_PATH . DS . 'footer.phtml'; ?>
+

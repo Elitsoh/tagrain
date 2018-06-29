@@ -1,0 +1,52 @@
+<?php include THEME_PATH . DS . 'header.phtml'; ?>
+<?php include THEME_PATH . DS . 'navbar.phtml'; ?>
+
+<div class="container">
+    <h1 class="mt-3 mb-3"><?= $title; ?></h1>
+
+    <form action="" method="POST">
+
+        <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text"
+                   name="title"
+                   id="title"
+                   class="form-control"
+                   placeholder="Titre de mon article"
+                   value="<?= $inputTitle; ?>"/>
+        </div>
+
+        <div class="form-group">
+            <label for="teaser">Chapôt</label>
+            <textarea rows="1" class="form-control" name="teaser" id="teaser"><?= $teaser; ?></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Texte</label>
+            <textarea class="form-control" name="content" id="content"><?= $content; ?></textarea>
+        </div>
+
+        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox"
+                   class="custom-control-input"
+                   name="status"
+                   id="status"
+                   <?= $status ? ' checked' : '' ?>/>
+            <label class="custom-control-label" for="status">Publier</label>
+        </div>
+
+        <div class="form-group">
+            <select name="categories[]" class="form-control" id="categories" size="4" multiple>
+                <?php foreach ($categories as $cat) : ?>
+                    <?php $selected = in_array($cat['category_id'], $inputCats) ? ' selected' : ''; ?>
+                    <option <?= $selected ?> value="<?= $cat['category_id']; ?>"><?= $cat['name']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+        <button class="btn btn-success">Ajouter</button>
+
+    </form>
+</div>
+
+<?php include THEME_PATH . DS . 'footer.phtml'; ?>
