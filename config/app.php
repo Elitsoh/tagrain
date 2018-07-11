@@ -10,12 +10,12 @@ define('CONF_PATH', ROOT_PATH . DS . 'config');
 
 // DATABASE
 // DSN == Data source name
-define('DB_DSN', 'mysql:host=localhost;dbname=aston;charset=utf8');
+define('DB_DSN', 'mysql:host=localhost;dbname=tagrain;charset=utf8');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
 // APP
-define('APP_NAME', 'Aston');
+define('APP_NAME', 'Tagrain');
 define('THEME', 'default');
 define('THEME_PATH', VIEWS_PATH . DS . THEME);
-define('BASE_URL', '/blogger');
+define('BASE_URL', '/tagrain');

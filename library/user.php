@@ -25,16 +25,15 @@ function authenticate(PDO $pdo, $username, $password) {
 
 // http://blogger.com/account-validation.php?email=toto@gmail.com&token=465sdf6sdf44s6f5
 function signup(PDO $pdo, $username, $email, $password) {
-    $sql = "INSERT INTO user VALUES (NULL, :username, :email, :pass, :firstname, :lastname, :createdAt)";
+    $sql = "INSERT INTO user VALUES (NULL, :username, :email, :pass, :createdAt, :birthdate)";
     $stmt = $pdo->prepare($sql);
 
     $data = [
         'username' => $username,
         'email' => $email,
         'pass' => password_hash($password, PASSWORD_BCRYPT),
-        'firstname' => '',
-        'lastname' => '',
         'createdAt' => date('Y-m-d H:i:s'),
+        'birthdate' => null,
     ];
 
     if ($stmt->execute($data)) {
@@ -53,4 +52,5 @@ function isUserExists(PDO $pdo, $username) {
     }
     return false;
 }
+
 

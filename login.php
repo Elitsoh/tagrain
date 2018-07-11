@@ -3,7 +3,7 @@
 require 'init.php';
 require LIB_PATH . DS . 'user.php';
 
-$errors = [];
+$user = [];
 $username = $_POST['username'] ?? null;
 $password = $_POST['password'] ?? null;
 
@@ -11,16 +11,16 @@ $password = $_POST['password'] ?? null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = authenticate($db, $username, $password);
 
-    if ($user) {
+    if($user){
         $_SESSION['user'] = $user;
-        header('Location: dashboard.php');
+        header('Location: index.php');
     } else {
-        $errors[] = 'Identifiant ou mot de passe invalid';
+        $errors[] = 'Identification ou mot de passe invalid';
     }
 }
 
 // Affichage de la vue.
 $title = "Page de connexion";
-$styles = [BASE_URL.'/views/'.THEME.'/css/signin.css'];
+//$styles = [BASE_URL.'/views/'.THEME.'/css/signin.css'];
 
 include THEME_PATH . DS . 'login.phtml';

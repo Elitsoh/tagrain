@@ -10,30 +10,34 @@ $username = $_POST['username'] ?? null;
 $password = $_POST['password'] ?? null;
 $confirmPassword = $_POST['confirmPassword'] ?? null;
 
+
 // Validation du formulaire.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     if (!validUsername($username, 3, 12)) {
         $errors[] = 'Identifiant incorrect';
     }
-    if (!validEmail($email, 10, 20)) {
+    if (!validEmail($email, 10, 80)) {
         $errors[] = 'Email incorrect';
     }
-    if (!validPassword($password, $confirmPassword, 4, 4)) {
-        $errors[] =  'Mot invalid ou ne correpond pas';
+    if (!validPassword($password, $confirmPassword)) {
+        $errors[] = 'Mot de passe invalid ou ne correspond pas';
     }
+
     if (empty($errors)) {
-        // nettoyage des données.
+        //nettoyage des données
         $username = strip_tags($username);
         $email = strip_tags($email);
         $password = strip_tags($password);
+    }
 
-        if (signup($db, $username, $email, $password) === 1) {
-            //echo $db->lastInsertId();
-            $user = authenticate($db, $username, $password);
-            if ($user) {
-                $_SESSION['user'] = $user;
-                header('Location: index.php');
-            }
+    if (signup($db, $username, $email, $password) === 1 ) {
+        //  echo $db->lastInsertId();
+
+        $user = authenticate($db, $username, $password);
+        if ($user) {
+            $_SESSION['user'] = $user;
+            header('Location: index.php');
         }
     }
 }
